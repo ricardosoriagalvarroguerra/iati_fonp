@@ -1,0 +1,344 @@
+---
+title: "Plan de Trabajo iati"
+subtitle: "Estudios Estratégicos y Económicos - VPD"
+
+format:
+  revealjs:
+    theme: white
+    transition: fade
+    slideNumber: true
+    center: false
+    incremental: true
+    fontsize: "34px"
+    font-family: "Roboto, sans-serif"
+    navigationMode: "default"
+    revealOptions:
+      plugins: ["menu"]
+    css: "styles.css"   # Aquí enlazas tu archivo de estilos
+
+execute:
+  echo: false
+  warning: false
+
+header-includes:
+  - |
+    <!-- Bloque HTML para los logos en la esquina inferior derecha -->
+    <div class="footer-logos">
+      <img src="fonplatalogo.png" alt="Fonplata Logo" />
+      <img src="iatilogo.png" alt="IATI Logo" />
+    </div>
+---
+
+<!-- PRIMERA DIAPOSITIVA -->
+::: {data-background-color="#518494" style="color: #FFFFFF; padding: 1em;"}
+
+# <span style="font-size: 1.5em;">**¿Qué es iati?**</span>
+
+- Es una campaña global que busca promover la <span style="color:#FFB703;">**transparencia**</span> en los flujos de ayuda financiera destinada al desarrollo.
+- Entre las organizaciones que publican información a través de IATI se encuentran gobiernos, bancos multilaterales de desarrollo (MDBs), instituciones financieras de desarrollo y otras entidades relevantes.
+- Estas organizaciones pueden compartir datos como presupuestos futuros, aprobaciones, desembolsos, ubicaciones de proyectos e incluso los resultados alcanzados por estos.
+
+:::
+
+<!-- SEGUNDA DIAPOSITIVA -->
+::: {data-background-color="#FFFFFF" style="color: #0b090a; padding: 1.5em; position: relative;"}
+
+# <span style="font-size: 1em;">¿Por qué reportar a <span style="color:#518494;">iati</span> es importante?</span>
+
+- **Fortalece la transparencia y la rendición de cuentas:** Demuestra una gestión eficiente y responsable de los recursos.
+- **Promueve la planificación y el seguimiento:** Permite una gestión estratégica y efectiva en los países receptores.
+- **Alineación con estándares internacionales:** Facilita la uniformidad en la gestión de nuestros datos, alineándolos con las prácticas de otros MDBs y organizaciones globales.
+- **Mejora la reputación internacional:** Resalta el compromiso del banco con la transparencia y la cooperación internacional.
+- **Maximiza el impacto de nuestras iniciativas:** Garantiza que los esfuerzos sean visibles, medibles y diseñados para generar un cambio positivo.
+
+:::
+
+<!-- TERCERA DIAPOSITIVA  -->
+::: {data-background-color="#FFFFFF" style="color: #0b090a; padding: 1em; display: flex; justify-content: center; align-items: center;"}
+# <span style="font-size: 1em;">**Alcance**</span>
+```{r, echo=FALSE, results='asis', warning=FALSE, message=FALSE}
+library(kableExtra)
+
+# Crea un data frame con las categorías y cantidades
+df <- data.frame(
+  Tipo_Org = c(
+    "ONG Internacional",
+    "ONG Nacional",
+    "Académica, Capacitación e Investigación",
+    "Sector Privado",
+    "Gobierno",
+    "Fundación",
+    "Otro Sector Público",
+    "Multilateral",
+    "ONG Regional",
+    "Alianza Público-Privada"
+  ),
+  Cantidad = c(659, 391, 171, 159, 85, 78, 64, 63, 46, 9)
+)
+
+# Tabla SIN resaltado
+kbl(df, col.names = c("Tipo_Org", "Cantidad"), format = "html")
+```
+
+:::
+
+::: {data-background-color="#FFFFFF" style="color: #0b090a; padding: 1em; display: flex; justify-content: center; align-items: center;"}
+#
+
+```{r, echo=FALSE, results='asis'}
+# Tabla CON resaltado (fila "Multilateral")
+kbl(df, col.names = c("Tipo_Org", "Cantidad"), format = "html") %>%
+  row_spec(
+    which(df$Tipo_Org == "Multilateral"),
+    background = "#ffb703"
+  )
+```
+::: 
+
+#
+
+:::: {.columns}
+::: {.column width="40%"}
+### Publicadores
+```{r, echo=FALSE, results='asis'}
+# Tabla CON resaltado (fila "Multilateral")
+kbl(df, col.names = c("Tipo_Org", "Cantidad"), format = "html") %>%
+  row_spec(
+    which(df$Tipo_Org == "Multilateral"),
+    background = "#ffb703"
+  )
+```
+:::
+::: {.column width="60%"}
+### Entre ellos:
+- Banco Inter-Americano de Desarrollo (*IADB*)
+
+- Banco de Desarrollo de América Latina y el Caribe (*CAF*)
+
+- Banco Mundial (*IBRD, IDA, etc.*)
+
+- Banco de Desarrollo del Caribe (*CDB*)
+
+- Fondo Monetario Internacional (*IMF*)
+
+- Banco de Desarrollo Asiático
+
+- Banco Africano de Desarrollo (*AFDB*)
+
+:::
+::::
+
+
+<!-- CUARTA DIAPOSITIVA  -->
+::: {data-background-color="#FFFFFF" style="color: #0b090a; padding: 2em; display: flex; justify-content: center; align-items: center;"}
+
+# <span style="font-size: 1.5em;">¿Qué tipo de <span style="color:#fb8500;">**datos**</span> se pueden publicar?</span>
+
+:::
+
+<!-- QUINTA DIAPOSITIVA  -->
+::: {data-background-color="#FFFFFF" style="color: #0b090a; padding: 2em; text-align: center;"}
+#
+<div style="text-align: center;">
+  <img src="IATISTANDARD.png" style="width: 100%; margin-top: 0px;" />
+</div>
+
+:::
+
+##  {data-background-color="#FFFFFF" style="color: #0b090a; padding: 2em;"}
+
+# **Cómo publicar en iati**
+
+1. [Registro de la organización](#/registroOrganizacion)
+2. [Requisitos](#/requisitos)
+3. [Armado de los datos](#/armadoDatos)
+4. [Validación de datos](#/valdatos)
+5. [Publicación](#/publicacion)
+
+---
+
+## Registro de la organización {#registroOrganizacion data-background-color="#FFFFFF" style="color: #0b090a; padding: 0.6em;"}
+Existen dos maneras para proceder con el registro:
+
+1. **IATI Publisher:** Herramienta gratuita diseñada para facilitar el registro y la publicación de datos mediante formularios estandarizados. Se recomienda su uso exclusivamente para organizaciones que gestionen reportes con menos de 100 actividades.
+
+
+2. **IATI Register:** Plataforma en línea que actúa como un repositorio central de datos en donde la organización carga sus propios datos transformados al <span style="color:#fb8500;">**estándar de iati**</span>.
+
+---
+
+## Requisitos {#requisitos data-background-color="#FFFFFF" style="color: #0b090a; padding: 0.6em;"}
+Para el registro de FONPLATA como publicador de datos es necesario definir: 
+
+- Identificador de Fonplata en IATI
+- Tipo de licencia bajo la cual se publicarán los datos
+- Tipo de organización que representamos
+- Sede central del banco
+- Correo electrónico de contacto
+- Frecuencia de publicación de los datos
+- Enlace al plan de implementación para el reporte de datos
+
+---
+
+## Armado de los datos {#armadoDatos data-background-color="#FFFFFF" style="color: #0b090a; padding: 0.6em;"}
+
+- **Volúmenes reducidos de datos:** Mediante la herramienta *IATI Publisher*, es posible cargar los datos directamente en su interfaz, sin necesidad de desarrollar sistemas auxiliares internos.
+
+
+- **Grandes volúmenes de datos:** Deben convertirse internamente al formato XML definido por el estándar IATI. Una vez transformados, los archivos se cargan para su evaluación. *(Existen servicios que permiten subcontratar esta tarea)*
+
+- Ejemplo de archivo para reporte [XML](https://iatistandard.org/en/iati-standard/203/organisation-standard/example-xml/).
+
+---
+
+## Validación de datos {#valdatos data-background-color="#FFFFFF" style="color: #0b090a; padding: 0.6em;"}
+
+- **Revisión interna:** Revisión de datos y valores con la clasificación interna del banco.
+
+- **Revisión externa:** [IATI Validator](https://iatistandard.org/en/iati-standard/203/organisation-standard/example-xml/) herramienta en línea diseñada para verificar si los datos cumplen con las reglas y directrices del Estándar IATI antes de ser cargados a la herramienta de publicación. *(Posibilidad de integrar la herramienta de validación a nuestros sistemas internos)*
+
+
+---
+
+## Publicación {#publicacion data-background-color="#FFFFFF" style="color: #0b090a; padding: 0.6em;"}
+
+```{r}
+library(knitr)
+library(kableExtra)
+# Crear la tabla de datos
+tabla <- data.frame(
+  Método = c("Publicación Manual", "Carga Masiva (CSV)", "Publicación Automatizada"),
+  `Cantidad de Archivos` = c(
+    "Menos de 5 archivos",
+    "Más de 5 archivos",
+    "Gran volumen o actualizaciones frecuentes"
+  ),
+  Ventajas = c(
+    "Sencillo y directo para pocos archivos.",
+    "Rápido y eficiente para múltiples archivos.",
+    "Ideal para organizaciones grandes o procesos frecuentes.\nReduce el trabajo manual y minimiza errores."
+  ),
+  Limitaciones = c(
+    "Poco eficiente para manejar múltiples archivos.\nDebes registrar cada archivo individualmente.",
+    "Requiere aprender a usar la plantilla CSV correctamente.\nUn paso adicional para preparar el archivo.",
+    "Configuración inicial más compleja.\nRequiere conocimientos técnicos y configuración de API."
+  )
+)
+
+# Generar la tabla con kableExtra para que sea estilizada
+tabla %>%
+  kbl(
+    caption = "Comparación de Métodos de Publicación en IATI",
+    booktabs = TRUE,
+    align = "l"
+  ) %>%
+  kable_styling(
+    full_width = FALSE,
+    position = "center",
+    bootstrap_options = c("striped", "hover", "condensed", "responsive")
+  ) %>%
+  column_spec(1, bold = TRUE)
+
+```
+
+
+---
+
+## CodeList {data-background-color="#FFFFFF" style="color: #0b090a; padding: 0.6em;"}
+
+Campos a reportar: 
+
+```{r, echo=FALSE, results='asis'}
+# Carga el paquete DT
+library(DT)
+
+# ---- Estilos CSS para hacer la tabla más compacta ----
+# Puedes ajustar 'font-size' según lo desees (por ej. 0.8em, 0.9em, etc.)
+css_estilos <- "
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    color: black !important;
+}
+table.dataTable.compact.dataTable th, 
+table.dataTable.compact.dataTable td {
+    padding: 4px 8px; 
+    font-size: 0.9em; 
+}
+"
+
+# Inyectamos el CSS
+cat(sprintf("<style>%s</style>", css_estilos))
+
+# Datos
+tabla <- data.frame(
+  "Campos de Datos" = c(
+    "ID de IATI",
+    "Nombre Organización",
+    "Titulo",
+    "Descripción",
+    "Estado",
+    "Fecha",
+    "Org. participativas",
+    "País que recibe",
+    "Región que recibie",
+    "Sector",
+    "Presupuesto",
+    "Transacciones"
+  ),
+  "Requisito" = c(
+    "Obligatorio",
+    "Obligatorio",
+    "Obligatorio",
+    "Obligatorio",
+    "Obligatorio",
+    "Obligatorio",
+    "Obligatorio",
+    "Recomendado",
+    "Recomendado",
+    "Obligatorio",
+    "Recomendado",
+    "Recomendado"
+  )
+)
+
+# ---- Renderizamos la tabla dentro de un div con font-size más pequeño (opcional) ----
+div_start <- '<div style="font-size: 90%;">'
+div_end   <- '</div>'
+
+cat(div_start)  # abrir div
+
+datatable(
+  tabla,
+  rownames = FALSE,        # Quita la columna de índice
+  class = 'compact',       # Clase para que DT use un estilo más compacto
+  options = list(
+    paging = FALSE,        # Quita la paginación
+    searching = FALSE,     # Desactiva el buscador
+    info = FALSE,          # Oculta la info de cuántas filas se muestran
+    ordering = FALSE,      # Desactiva el ordenamiento
+    dom = 't',             # Solo se muestra la tabla
+    scrollX = TRUE         # Desplazamiento horizontal si es muy ancha
+  )
+) %>%
+  formatStyle(
+    "Requisito",
+    color = styleEqual(
+      c("Obligatorio", "Recomendado"),
+      c("red",         "orange")
+    )
+  )
+
+cat(div_end)
+```
+
+---
+
+## IATI Score {data-background-color="#FFFFFF" style="color: #0b090a; padding: 0.6em; font-size: 0.8em;"}
+
+Las métricas de desempeño con las cuales se califica a nuestra organización se basan en las dimensiones de:
+
+- **Timeliness:** Mide cuántos días en los últimos 12 meses un publicador actualizó la fecha más reciente de sus transacciones. También detecta si reporta fechas futuras, asignando banderas: roja si lo hace actualmente y amarilla si ocurrió en el último año.
+
+- **Forward Looking:** Mide la capacidad y consistencia de los editores para proporcionar información presupuestaria prospectiva.
+
+- **Comprehensive:** Mide el porcentaje promedio de actividades con datos válidos en tres categorías clave: elementos esenciales (Core), necesarios para la validez de los datos en IATI; elementos financieros (Financial), que cubren información monetaria; y elementos de valor agregado (Value Added), que aportan datos adicionales para mejorar su utilidad.
+
